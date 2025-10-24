@@ -1,69 +1,33 @@
 def algo1(arr):
-    arr.sort()
     n = len(arr)
-    
-    if n <= 1:
-        return arr 
-        
-    else:
-        half = n // 2
-        
-        
-        l = []
-        r = []
-        k = half
-        
-        for i in range(0, half):
-            l.append(arr[i])
-        
-        for j in range(half, n):
-            r.append(arr[j])
-        
-        sorted_l = algo1(l)
-        sorted_r = algo1(r)
-        
-        
-        
-        return sorted_l, sorted_r
+    half = n // 2
+    l = arr[:half]
+    r = arr[half:]
+    return l, r
 
-def binary_search(left, x):
-    return binary_search_range(left, x, 0, len(left))
-    
-def binary_search_range(v, q, s, e):
-    if s == e:
-        return None
-        
-    else:
-        half = (s + e) // 2
-        if q < v[half]:
-            return binary_search_range(v, q, s, half)
-        elif q == v[half]:
-            return half
-        else:
-            return binary_search_range(v, q, half+1, e)
-        
-    
-    
-    
+
+def solve_right(arr):
+    last = arr[-1]
+    selected = []
+    for val in reversed(arr):
+        if val >= last:
+            selected.append(val)
+            last = val
+    return selected
+
+def solve_left(arr):
+    first = arr[0]
+    selected = []
+    for i in arr:
+        if i >= first:
+            selected.append(i)
+            first = i 
+
 arr = [3, 7, 8, 3, 6, 1]
 left, right = algo1(arr)
-print('left: ', left)
-print('right: ', right)
+print('left:', left)
+print('right:', right)
 
-x = left[0]
-
-
-j = binary_search(left, x)
-
-print(j)
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
+visible_right = solve_right(right)
+visible_left = solve_left(left)
+print('visible_right:', visible_right)
