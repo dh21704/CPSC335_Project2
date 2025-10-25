@@ -1,33 +1,31 @@
-# Foobar
+# Activity Selection
 
-Foobar is a Python library for dealing with word pluralization.
+Algorithm 2
+
+## Description
+This project takes in a tuple of lists of acitivities with a start and finish time. It returns the maximum number of activities that do not ovberlap assuming a single person performs all activities. 
+
+
+## Features
+
+prints out the list of selected activities that maximize teh non overlapping participation
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+1. need an online IDE
+2. need the newest python installed
 
-```bash
-pip install foobar
-```
+## Input
 
-## Usage
+tup = [(1, 3), (2, 5), (4, 6), (6, 7), (5, 9), (8, 9)]
 
-```python
-import foobar
+## Output
 
-# returns 'words'
-foobar.pluralize('word')
+[(1, 3), (4, 6), (6, 7), (8, 9)]
 
-# returns 'geese'
-foobar.pluralize('goose')
+## Algorithm Notes
 
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+Uses greedy algorithm and picks the next activity with teh earliest finishing time
 
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+Time: O(n log n)
+Space O(n)
